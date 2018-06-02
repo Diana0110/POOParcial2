@@ -16,7 +16,7 @@ import Vehiculos.Vehiculo;
 public class CentroDeMando implements Edificacion {
 
     @Override
-    public Edificacion seConstruye() {
+    public Edificacion seConstruye(int e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -37,6 +37,11 @@ public class CentroDeMando implements Edificacion {
 
     @Override
     public Soldado entrenaSoldados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ErrorDeCreacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

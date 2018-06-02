@@ -13,11 +13,30 @@ import Vehiculos.Vehiculo;
  *
  * @author Diana
  */
-public class ContenedorDeVehiculos implements Edificacion {
+public class EdificacionFactory implements Edificacion {
 
+    /**
+     *
+     * @param e
+     * @return
+     * @throws ErrorDeCreacion
+     */
     @Override
     public Edificacion seConstruye(int e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        switch (e) {
+            case 1:
+                return new ContenedorDeAgua();
+            case 2:
+                return new ContenedorDeComida();
+            case 3:
+                return new ContenedorDeOro();
+            case 4:
+                return new ContenedorDeMilicia();
+            case 5:
+                return new ContenedorDeVehiculos();
+        }
+        ErrorDeCreacion();//probar si funciona hacerlo con todas las factory
+        return null;
     }
 
     @Override
@@ -44,5 +63,5 @@ public class ContenedorDeVehiculos implements Edificacion {
     public void ErrorDeCreacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

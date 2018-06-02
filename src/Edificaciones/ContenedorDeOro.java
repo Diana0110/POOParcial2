@@ -5,10 +5,44 @@
  */
 package Edificaciones;
 
+import Milicia.Soldado;
+import Recursos.Recurso;
+import Vehiculos.Vehiculo;
+
 /**
  *
  * @author Diana
  */
-public class ContenedorDeOro {
+public class ContenedorDeOro implements Edificacion {
+
+    @Override
+    public Edificacion seConstruye(int e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void vida() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Recurso almacena() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Vehiculo construyeVehiculo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Soldado entrenaSoldados() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ErrorDeCreacion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
