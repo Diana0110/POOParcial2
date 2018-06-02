@@ -5,6 +5,10 @@
  */
 package Edificaciones;
 
+import Milicia.Soldado;
+import Recursos.Recurso;
+import Vehiculos.Vehiculo;
+
 /**
  *
  * @author Diana
