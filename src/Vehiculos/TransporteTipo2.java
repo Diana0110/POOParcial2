@@ -5,6 +5,8 @@
  */
 package Vehiculos;
 
+import Vehiculos.Vehiculo;
+
 /**
  *
  * @author Diana
