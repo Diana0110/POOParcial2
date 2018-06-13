@@ -12,11 +12,6 @@ package Milicia;
 public class Escuadron implements Soldado {
 
     @Override
-    public Soldado seCrea() {
-
-    }
-
-    @Override
     public void pelea() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -38,6 +33,11 @@ public class Escuadron implements Soldado {
 
     @Override
     public void muere() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Soldado seCrea() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
