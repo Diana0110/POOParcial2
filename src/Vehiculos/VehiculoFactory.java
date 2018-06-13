@@ -5,24 +5,36 @@
  */
 package Vehiculos;
 
-
+import java.util.Scanner;
 /**
  *
  * @author Diana
  */
 public class VehiculoFactory {
-    public Vehiculo creaVehiculo(int v){
-        switch(v){
+    public Vehiculo creaVehiculo() {
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Ingrese edificacion que desea:\n"
+                + "| 1. Avion | 2. Tanque |\n"
+                + "| 3. Transporte tipo 1 | 4. Transporte tipo 2 |\n"
+                + "opcion: ");
+        int c = entrada.nextInt();
+
+        switch (c) {
             case 1:
-                return new AvionFactory();
+                Avion avion = new Avion();
+                return avion.creaVehiculo();
             case 2:
-                return new TanqueFactory();
+                Tanque tanque = new Tanque();
+                return tanque.creaVehiculo();
             case 3:
-                return new TransporteTipo1Factory();
+                TransporteTipo1 tipo1 = new TransporteTipo1();
+                return tipo1.creaVehiculo();
             case 4:
-                return new TransporteTipo2Factory();
+                 TransporteTipo2 tipo2 = new TransporteTipo2();
+                return tipo2.creaVehiculo();
+            default:
+                System.out.println("Error de seleccion. Intente de nuevo");
+                return creaVehiculo();
         }
-        return null;
     }
-    
 }

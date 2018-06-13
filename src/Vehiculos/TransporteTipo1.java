@@ -5,7 +5,6 @@
  */
 package Vehiculos;
 
-import Vehiculos.Vehiculo;
 
 /**
  *
@@ -25,6 +24,11 @@ public class TransporteTipo1 implements Vehiculo {
 
     @Override
     public void transporta() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Vehiculo creaVehiculo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

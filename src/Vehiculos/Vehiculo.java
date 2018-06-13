@@ -10,6 +10,7 @@ package Vehiculos;
  * @author Diana
  */
 public interface Vehiculo {
+    public Vehiculo creaVehiculo();
     public void ataca();
     public void seMueve();
     public void transporta();
