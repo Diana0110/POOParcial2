@@ -6,12 +6,13 @@
 package Razas;
 
 /**
- *
+ * PRODUCTO ABSTRACTO
  * @author Diana
  */
-public interface Raza {
-    public Perro crearPerro(int p);
-    public Gato crearGato(int g);
-    public Loro crearLoro(int l);
 
+public interface Raza {
+    public int Vida();
+    public int ataca();
+    public void evoluciona();   
+    
 }
