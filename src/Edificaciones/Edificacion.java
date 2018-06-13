@@ -5,19 +5,15 @@
  */
 package Edificaciones;
 
-import Milicia.Soldado;
 import Recursos.Recurso;
-import Vehiculos.Vehiculo;
 
 /**
  *
  * @author Diana
  */
+
 public interface Edificacion{
-    public Edificacion seConstruye(int e);
-    public void vida();
-    public Recurso almacena();
-    public Vehiculo construyeVehiculo();
-    public Soldado entrenaSoldados();
-    public void ErrorDeCreacion();
+    public Edificacion crearEdificacion();
+    public Recurso Almacena();
+    public void seDestruye();
 }

@@ -5,9 +5,7 @@
  */
 package Edificaciones;
 
-import Milicia.Soldado;
 import Recursos.Recurso;
-import Vehiculos.Vehiculo;
 
 /**
  *
@@ -16,32 +14,17 @@ import Vehiculos.Vehiculo;
 public class CentroDeMando implements Edificacion {
 
     @Override
-    public Edificacion seConstruye(int e) {
+    public Edificacion crearEdificacion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void vida() {
+    public Recurso Almacena() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Recurso almacena() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Vehiculo construyeVehiculo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Soldado entrenaSoldados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void ErrorDeCreacion() {
+    public void seDestruye() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

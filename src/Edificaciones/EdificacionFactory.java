@@ -5,63 +5,45 @@
  */
 package Edificaciones;
 
-import Milicia.Soldado;
-import Recursos.Recurso;
-import Vehiculos.Vehiculo;
+import Edificaciones.Contenedores.ContenedorComida;
+import Edificaciones.Contenedores.ContenedorDeAgua;
+import Edificaciones.Contenedores.ContenedorMilicia;
+import Edificaciones.Contenedores.ContenedorOro;
+import Edificaciones.Contenedores.ContenedorVehiculos;
+import java.util.Scanner;
 
 /**
  *
  * @author Diana
  */
-public class EdificacionFactory implements Edificacion {
+public class EdificacionFactory {
+    public Edificacion creaEdificacion() {
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Ingrese edificacion que desea:\n"
+                + "| 1. Contendor de Comida | 2. Contendor de Agua |\n"
+                + "| 3. Mina de oro | 4. Base Militar | 5. Contenedor de Vehiculos |\n"
+                + "opcion: ");
+        int c = entrada.nextInt();
 
-    /**
-     *
-     * @param e
-     * @return
-     * @throws ErrorDeCreacion
-     */
-    @Override
-    public Edificacion seConstruye(int e) {
-        switch (e) {
+        switch (c) {
             case 1:
-                return new ContenedorDeAgua();
+                ContenedorComida comida = new ContenedorComida();
+                return comida.crearEdificacion();
             case 2:
-                return new ContenedorDeComida();
+                ContenedorDeAgua agua = new ContenedorDeAgua();
+                return agua.crearEdificacion();
             case 3:
-                return new ContenedorDeOro();
+                ContenedorOro oro = new ContenedorOro();
+                return oro.crearEdificacion();
             case 4:
-                return new ContenedorDeMilicia();
+                ContenedorMilicia milicia = new ContenedorMilicia();
+                return milicia.crearEdificacion();
             case 5:
-                return new ContenedorDeVehiculos();
+                ContenedorVehiculos vehiculo = new ContenedorVehiculos();
+                return vehiculo.crearEdificacion();
+            default:
+                System.out.println("Error de seleccion. Intente de nuevo");
+                return creaEdificacion();
         }
-        ErrorDeCreacion();//probar si funciona hacerlo con todas las factory
-        return null;
     }
-
-    @Override
-    public void vida() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Recurso almacena() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Vehiculo construyeVehiculo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Soldado entrenaSoldados() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void ErrorDeCreacion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }
