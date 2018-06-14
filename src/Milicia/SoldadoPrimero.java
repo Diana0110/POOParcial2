@@ -5,15 +5,99 @@
  */
 package Milicia;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Diana
  */
-public class SoldadoPrimero  implements Soldado {
+public class SoldadoPrimero implements Soldado {
+
+    int cantInicial;
+    String nombre;
+    int precioEnAgua;
+    int precioEnComida;
+    int FasesRecoleccion; //por defecto
+    int FasesGenerados;//mas caro
+
+    public ArrayList<SoldadoPrimero> SolPrimero = new ArrayList();//Toda el agua se guarda en un array
+
+    public int getCantInicial() {
+        return cantInicial;
+    }
+
+    public void setCantInicial(int cantInicial) {
+        this.cantInicial = cantInicial;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getPrecioEnAgua() {
+        return precioEnAgua;
+    }
+
+    public void setPrecioEnAgua(int precioEnAgua) {
+        this.precioEnAgua = precioEnAgua;
+    }
+
+    public int getPrecioEnComida() {
+        return precioEnComida;
+    }
+
+    public void setPrecioEnComida(int precioEnComida) {
+        this.precioEnComida = precioEnComida;
+    }
+
+    public int getFasesRecoleccion() {
+        return FasesRecoleccion;
+    }
+
+    public void setFasesRecoleccion(int FasesRecoleccion) {
+        this.FasesRecoleccion = FasesRecoleccion;
+    }
+
+    public int getFasesGenerados() {
+        return FasesGenerados;
+    }
+
+    public void setFasesGenerados(int FasesGenerados) {
+        this.FasesGenerados = FasesGenerados;
+    }
+
+    //constructores
+    public SoldadoPrimero() {
+
+    }
+
+    public SoldadoPrimero(String nombre, int cantInicial,int precioEnComida, int FasesRecoleccion, int FasesGenerados) {
+        this.nombre = nombre;
+        this.cantInicial = cantInicial;
+        this.precioEnAgua = precioEnComida;
+        this.FasesRecoleccion = FasesRecoleccion;
+        this.FasesGenerados = FasesGenerados;
+
+    }
 
     @Override
     public Soldado seCrea() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.setNombre("Soldado Primero");
+        this.cantInicial = 1;
+        this.precioEnAgua = 10;
+        this.precioEnComida = 20;
+        this.FasesRecoleccion = 4;
+        this.FasesGenerados = 3;
+
+        SoldadoPrimero nuevoSolPrimero = new SoldadoPrimero();
+        this.SolPrimero.add(nuevoSolPrimero);
+        System.out.println("SOLDADO CREADO\n");
+
+        return nuevoSolPrimero;
     }
 
     @Override
@@ -40,5 +124,5 @@ public class SoldadoPrimero  implements Soldado {
     public void muere() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
