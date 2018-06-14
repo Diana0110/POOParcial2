@@ -5,13 +5,13 @@
  */
 package Recursos;
 
+import Jugadores.Usuario;
 import java.util.Scanner;
 
 /**
  *
  * @author Diana
  */
-
 //esto sera para la compra de recursos predetermida 
 public class RecursosFactory {
 

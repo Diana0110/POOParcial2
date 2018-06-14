@@ -12,6 +12,5 @@ package Recursos;
  */
 public interface Recurso {
     public Recurso crearRecurso();
-
-    public void incrementan();
+    public void comprarRecurso(Recurso recurso1, Recurso recurso2);
 }
