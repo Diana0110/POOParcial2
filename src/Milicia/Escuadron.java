@@ -17,7 +17,6 @@ public class Escuadron implements Soldado {
     String nombre;
     int precioEnOro;
     int precioEnComida;
-    int FasesRecoleccion; //por defecto
     int FasesGenerados;//mas caro
 
     public ArrayList<Escuadron> escuadron = new ArrayList();//Toda el agua se guarda en un array
@@ -27,12 +26,11 @@ public class Escuadron implements Soldado {
         
     }
     
-    public Escuadron(String nombre, int cantInicial, int precioEnOro, int precioEnComida, int FasesRecoleccion, int FasesGenerados){
+    public Escuadron(String nombre, int cantInicial, int precioEnOro, int precioEnComida, int FasesGenerados){
         this.nombre = nombre;
         this.cantInicial = cantInicial;
         this.precioEnOro = precioEnOro;
         this.precioEnComida = precioEnComida;
-        this.FasesRecoleccion = FasesRecoleccion;
         this.FasesGenerados = FasesGenerados;
     }
 
@@ -66,14 +64,6 @@ public class Escuadron implements Soldado {
 
     public void setPrecioEnComida(int precioEnComida) {
         this.precioEnComida = precioEnComida;
-    }
-
-    public int getFasesRecoleccion() {
-        return FasesRecoleccion;
-    }
-
-    public void setFasesRecoleccion(int FasesRecoleccion) {
-        this.FasesRecoleccion = FasesRecoleccion;
     }
 
     public int getFasesGenerados() {
@@ -115,10 +105,9 @@ public class Escuadron implements Soldado {
     this.cantInicial = 3;
     this.precioEnOro = 50;
     this.precioEnComida = 30;
-    this.FasesRecoleccion = 3;
-    this.FasesGenerados = 2;
+    this.FasesGenerados = 3;
     
-    Escuadron nuevoEscuadron = new Escuadron();
+    Escuadron nuevoEscuadron = new Escuadron(nombre, cantInicial, precioEnOro, precioEnComida, FasesGenerados);
     this.escuadron.add(nuevoEscuadron);
     System.out.println("ESCUADRON CREADO\n");
     

@@ -17,15 +17,17 @@ public class PerroFactory {
     public Raza crearPerro(int p) {
         switch (p) {
             case 1:
+                PerroDeCombate combate = new PerroDeCombate();
                 System.out.println("Perro de combate creado\n");
-                return new PerroDeCombate();
+                return combate.seCrea();
             case 2:
+                PerroExplorador explorar = new PerroExplorador();
                 System.out.println("Perro Explorador creado\n");
-                return new PerroExplorador();
+                return explorar.seCrea();
             case 3:
+                PerroGuardian guardian = new PerroGuardian();
                 System.out.println("Perro Guardian creado\n");
-                return new PerroGuardian();
-
+                return guardian.seCrea();
             default:
                 System.out.println("Error de creacion. Intente nuevamente");
 

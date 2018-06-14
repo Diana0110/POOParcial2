@@ -11,6 +11,7 @@ package Razas;
  */
 
 public interface Raza {
+    public Raza seCrea();
     public int Vida();
     public int ataca();
     public void evoluciona();   

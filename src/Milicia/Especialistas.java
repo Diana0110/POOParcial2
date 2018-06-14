@@ -18,7 +18,6 @@ public class Especialistas implements Soldado {
     int precioEnOro;
     int precioEnAgua;
     int precioEnComida;
-    int FasesRecoleccion; //por defecto
     int FasesGenerados;//mas caro
 
     public ArrayList<Especialistas> especialistas = new ArrayList();//Toda el agua se guarda en un array
@@ -62,14 +61,6 @@ public class Especialistas implements Soldado {
         this.precioEnAgua = precioEnAgua;
     }
 
-    public int getFasesRecoleccion() {
-        return FasesRecoleccion;
-    }
-
-    public void setFasesRecoleccion(int FasesRecoleccion) {
-        this.FasesRecoleccion = FasesRecoleccion;
-    }
-
     public int getFasesGenerados() {
         return FasesGenerados;
     }
@@ -85,12 +76,11 @@ public class Especialistas implements Soldado {
 
     }
 
-    public Especialistas(String nombre, int cantInicial, int precioEnOro, int precioEnComida, int FasesRecoleccion, int FasesGenerados) {
+    public Especialistas(String nombre, int cantInicial, int precioEnOro, int precioEnComida, int FasesGenerados) {
         this.nombre = nombre;
         this.cantInicial = cantInicial;
         this.precioEnOro = precioEnOro;
         this.precioEnAgua = precioEnComida;
-        this.FasesRecoleccion = FasesRecoleccion;
         this.FasesGenerados = FasesGenerados;
 
     }
@@ -101,11 +91,9 @@ public class Especialistas implements Soldado {
         this.cantInicial = 1;
         this.precioEnOro = 70;
         this.precioEnAgua = 30;
-        this.precioEnComida = 20;
-        this.FasesRecoleccion = 4;
         this.FasesGenerados = 3;
 
-        Especialistas nuevoEspecialista = new Especialistas();
+        Especialistas nuevoEspecialista = new Especialistas(nombre, cantInicial,precioEnOro, precioEnComida, FasesGenerados);
         this.especialistas.add(nuevoEspecialista);
         System.out.println("ESPECIALISTA CREADO\n");
 

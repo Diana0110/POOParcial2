@@ -17,7 +17,6 @@ public class SoldadoPrimero implements Soldado {
     String nombre;
     int precioEnAgua;
     int precioEnComida;
-    int FasesRecoleccion; //por defecto
     int FasesGenerados;//mas caro
 
     public ArrayList<SoldadoPrimero> SolPrimero = new ArrayList();//Toda el agua se guarda en un array
@@ -54,14 +53,6 @@ public class SoldadoPrimero implements Soldado {
         this.precioEnComida = precioEnComida;
     }
 
-    public int getFasesRecoleccion() {
-        return FasesRecoleccion;
-    }
-
-    public void setFasesRecoleccion(int FasesRecoleccion) {
-        this.FasesRecoleccion = FasesRecoleccion;
-    }
-
     public int getFasesGenerados() {
         return FasesGenerados;
     }
@@ -75,11 +66,11 @@ public class SoldadoPrimero implements Soldado {
 
     }
 
-    public SoldadoPrimero(String nombre, int cantInicial,int precioEnComida, int FasesRecoleccion, int FasesGenerados) {
+    public SoldadoPrimero(String nombre, int cantInicial, int precioEnAgua, int precioEnComida, int FasesGenerados) {
         this.nombre = nombre;
         this.cantInicial = cantInicial;
+        this.precioEnAgua = precioEnAgua;
         this.precioEnAgua = precioEnComida;
-        this.FasesRecoleccion = FasesRecoleccion;
         this.FasesGenerados = FasesGenerados;
 
     }
@@ -90,10 +81,9 @@ public class SoldadoPrimero implements Soldado {
         this.cantInicial = 1;
         this.precioEnAgua = 10;
         this.precioEnComida = 20;
-        this.FasesRecoleccion = 4;
         this.FasesGenerados = 3;
 
-        SoldadoPrimero nuevoSolPrimero = new SoldadoPrimero();
+        SoldadoPrimero nuevoSolPrimero = new SoldadoPrimero(nombre,cantInicial,precioEnAgua,precioEnComida, FasesGenerados);
         this.SolPrimero.add(nuevoSolPrimero);
         System.out.println("SOLDADO CREADO\n");
 

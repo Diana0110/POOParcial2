@@ -14,7 +14,6 @@ public class Agua implements Recurso {
 
     int cantInicial;
     String nombre;
-    //Recurso tipo;
     int precioEnOro;
     int precioEnComida;
     int FasesRecoleccion; //por defecto

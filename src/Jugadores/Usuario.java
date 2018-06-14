@@ -197,7 +197,6 @@ public class Usuario {
                 milicia.creaSoldado();
 
                 jugadorActivo.setEstado(true);
-                cantTurnos = jugadorActivo.cuentaTurnos(estado);
                 jugadorInactivo.setEstado(false);//jugador inactivo pasa a estar activo
                 Turno(jugadorActivo, jugadorInactivo);
                 muestraAcciones(jugadorActivo, jugadorInactivo);

@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Diana
  */
 public class GatoFactory {
-    
+
     int cantGatosDeCombate;
     int cantGatosExploradores;
     int cantGatosGuardianes;
@@ -21,15 +21,17 @@ public class GatoFactory {
     public Raza crearGato(int g) {
         switch (g) {
             case 1:
+                GatoDeCombate combate = new GatoDeCombate();
                 System.out.println("Gato de combate creado\n");
-                return new GatoDeCombate();
+                return combate.seCrea();
             case 2:
+                GatoExplorador explorador = new GatoExplorador();
                 System.out.println("Gato Explorador creado\n");
-                cantGatosExploradores++;
-                return new GatoExplorador();
+                return explorador.seCrea();
             case 3:
+                GatoGuardian guardian = new GatoGuardian();
                 System.out.println("Grato Guardian creado\n");
-                return new GatoGuardian();
+                return guardian.seCrea();
             default:
                 System.out.println("Error de creacion. Intente nuevamente");
 

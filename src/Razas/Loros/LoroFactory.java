@@ -17,14 +17,18 @@ public class LoroFactory {
 
         switch (l) {
             case 1:
+                LoroDeCombate combate = new LoroDeCombate();
                 System.out.println("Loro de combate creado\n");
-                return new LoroDeCombate();
+                
+                return combate.seCrea();
             case 2:
+                LoroExplorador explorador = new LoroExplorador();
                 System.out.println("Loro Explorador creado\n");
-                return new LoroExplorador();
+                return explorador.seCrea();
             case 3:
+                LoroGuardian guardian = new LoroGuardian();
                 System.out.println("loro Guardian creado\n");
-                return new LoroGuardian();
+                return guardian.seCrea();
 
             default:
                 System.out.println("Error de creacion. Intente nuevamente");
