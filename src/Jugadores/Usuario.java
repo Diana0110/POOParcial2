@@ -22,7 +22,7 @@ public class Usuario {
     String alias;
     Raza raza;
     int cantFases = 1;
-    int FasesTotales =1;
+    int FasesTotales = 1;
     int cantTurnos = 1;
     Usuario jugadorActivo, jugadorInactivo;
 
@@ -149,10 +149,11 @@ public class Usuario {
         //Verifica cual de los dos jugadores esta en turno activo  
         if (jugador01.isEstado() == true) { //si el usuario 1 esta activo juega
             this.setJugadorActivo(jugador01);
-            System.out.println("JUGADOR: " + jugadorActivo.getAlias());
+            System.out.println("| TURNO DE: " + jugadorActivo.getAlias() + "|");
         } else {
             this.setJugadorActivo(jugador02);
-            System.out.println("JUGADOR: " + jugadorActivo.getAlias());
+            System.out.println("|"
+                    + " TURNO DE: " + jugadorActivo.getAlias() + "|");
         }
     }
 
@@ -167,7 +168,6 @@ public class Usuario {
     public void muestraAcciones(Usuario jugadorActivo, Usuario jugadorInactivo) {
         System.out.println("TURNO: " + jugadorActivo.getCantTurnos());
         System.out.println("FASE: " + this.getFasesTotales());
- 
 
         System.out.println("Que desea hacer?:\n"
                 + "1. Obtener recurso\n"
@@ -183,16 +183,34 @@ public class Usuario {
                 System.out.println("metodo comprar recursos");
                 RecursosFactory recursos = new RecursosFactory();
                 recursos.creaRecursos();
+
+                jugadorActivo.setEstado(true);
+                cantTurnos = jugadorActivo.cuentaTurnos(estado);
+                jugadorInactivo.setEstado(false);//jugador inactivo pasa a estar activo
+                Turno(jugadorActivo, jugadorInactivo);
+                muestraAcciones(jugadorActivo, jugadorInactivo);
                 break;
             case 2:
             case 3:
                 System.out.println("factory tropas");
                 MiliciaFactory milicia = new MiliciaFactory();
                 milicia.creaSoldado();
+
+                jugadorActivo.setEstado(true);
+                cantTurnos = jugadorActivo.cuentaTurnos(estado);
+                jugadorInactivo.setEstado(false);//jugador inactivo pasa a estar activo
+                Turno(jugadorActivo, jugadorInactivo);
+                muestraAcciones(jugadorActivo, jugadorInactivo);
                 break;
             case 4:
                 EdificacionFactory edificacion = new EdificacionFactory();
                 edificacion.creaEdificacion();
+
+                jugadorActivo.setEstado(true);
+                cantTurnos = jugadorActivo.cuentaTurnos(estado);
+                jugadorInactivo.setEstado(false);//jugador inactivo pasa a estar activo
+                Turno(jugadorActivo, jugadorInactivo);
+                muestraAcciones(jugadorActivo, jugadorInactivo);
                 break;
             case 5:
                 System.out.println("metodo atacar");
