@@ -9,7 +9,10 @@ import Edificaciones.EdificacionFactory;
 import Milicia.MiliciaFactory;
 import Razas.Raza;
 import Razas.RazaFactory;
-import Recursos.RecursosFactory;
+import Recursos.Agua;
+import Recursos.Comida;
+import Recursos.Oro;
+import Recursos.Recurso;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -25,10 +28,13 @@ public class Usuario {
     int FasesTotales = 1;
     int cantTurnos = 1;
     Usuario jugadorActivo, jugadorInactivo;
+    boolean estado = false;
+    int aguaInicial = 300, comidaInicial = 300, oroInicial = 300;
 
     public ArrayList<Usuario> usuario = new ArrayList(); //Lista donde se guardan los de los jugadores
-
-    boolean estado = false;
+    public ArrayList<Recurso> aguaTotal = new ArrayList();
+    public ArrayList<Recurso> comida = new ArrayList();
+    public ArrayList<Recurso> oro = new ArrayList();
 
     //Constructor USUARIO  - JUGADOR
     public Usuario() {
@@ -39,11 +45,14 @@ public class Usuario {
 
     }
 
-    public Usuario(String alias, Raza raza, boolean estado, int cantTurnos) {
+    public Usuario(String alias, Raza raza, boolean estado, int cantTurnos, int aguaInicial, int comidaInicial, int oroInicial) {
         this.alias = alias;
         this.raza = raza;
         this.estado = estado;
         this.cantTurnos = cantTurnos;
+        this.aguaInicial = aguaInicial;
+        this.comidaInicial = comidaInicial;
+        this.oroInicial = oroInicial;
     }
 
     public String getAlias() {
@@ -110,6 +119,70 @@ public class Usuario {
         this.FasesTotales = FasesTotales;
     }
 
+    public ArrayList<Usuario> getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(ArrayList<Usuario> usuario) {
+        this.usuario = usuario;
+    }
+
+    public ArrayList<Recurso> getAgua() {
+        return aguaTotal;
+    }
+
+    public void setAgua(ArrayList<Recurso> aguaTotal) {
+        this.aguaTotal = aguaTotal;
+    }
+
+    public ArrayList<Recurso> getComida() {
+        return comida;
+    }
+
+    public void setComida(ArrayList<Recurso> comida) {
+        this.comida = comida;
+    }
+
+    public ArrayList<Recurso> getOro() {
+        return oro;
+    }
+
+    public void setOro(ArrayList<Recurso> oro) {
+        this.oro = oro;
+    }
+
+    public int getAguaInicial() {
+        return aguaInicial;
+    }
+
+    public void setAguaInicial(int aguaInicial) {
+        this.aguaInicial = aguaInicial;
+    }
+
+    public int getComidaInicial() {
+        return comidaInicial;
+    }
+
+    public void setComidaInicial(int comidaInicial) {
+        this.comidaInicial = comidaInicial;
+    }
+
+    public Scanner getEntrada() {
+        return entrada;
+    }
+
+    public void setEntrada(Scanner entrada) {
+        this.entrada = entrada;
+    }
+
+    public int getOroInicial() {
+        return oroInicial;
+    }
+
+    public void setOroInicial(int oroInicial) {
+        this.oroInicial = oroInicial;
+    }
+
     //metodos
     Scanner entrada = new Scanner(System.in);
 
@@ -130,8 +203,10 @@ public class Usuario {
         this.setCantTurnos(1);
         //el estado del jugador es 'activo' esto le permite empezar a jugar al finalizar su inscripcion 
         this.setEstado(true);
+        this.setAguaInicial(aguaInicial);
 
-        Usuario nuevoUsuario = new Usuario(alias, raza, estado, cantTurnos);
+        //nombre, cantidad, precioEnOro, precioEnComida, FasesRecoleccion, FasesGenerados
+        Usuario nuevoUsuario = new Usuario(alias, raza, estado, cantTurnos, aguaInicial, comidaInicial, oroInicial);
         //Los datos del jugador son almacenados en un arraylist
         this.usuario.add(nuevoUsuario);
 
@@ -167,7 +242,11 @@ public class Usuario {
 
     public void muestraAcciones(Usuario jugadorActivo, Usuario jugadorInactivo) {
         System.out.println("TURNO: " + jugadorActivo.getCantTurnos());
-        System.out.println("FASE: " + this.getFasesTotales());
+        System.out.println("FASE: " + this.getFasesTotales() + "\n");
+
+        System.out.println("Agua: " + jugadorActivo.getAguaInicial());
+        System.out.println("Comida: " + jugadorActivo.getComidaInicial());
+        System.out.println("Oro: " + jugadorActivo.getOroInicial() + "\n");
 
         System.out.println("Que desea hacer?:\n"
                 + "1. Obtener recurso\n"
@@ -180,12 +259,50 @@ public class Usuario {
         int a = entrada.nextInt();
         switch (a) {
             case 1:
-                System.out.println("metodo comprar recursos");
-                RecursosFactory recursos = new RecursosFactory();
-                recursos.creaRecursos();
+                System.out.println("Ingrese el recurso que desea:\n"
+                        + "1. Agua | 2. Comida |  3.Oro");
+                int r = entrada.nextInt();
+                switch (r) {
+                    case 1:
+                        Agua ag = new Agua();
+                        int AguaRequerida = ag.crearRecurso(this.comidaInicial, this.oroInicial);
+                        int nueva = this.aguaInicial + AguaRequerida;
+                        int nuevaComida = this.comidaInicial - (AguaRequerida * 2);
+                        this.comidaInicial = nuevaComida;
+                        int nuevoOro = this.oroInicial - (AguaRequerida * 2);
+                        this.aguaInicial = nueva;
+                        jugadorActivo.setComidaInicial(nuevaComida);
+                        jugadorActivo.setOroInicial(nuevoOro);
+                        jugadorActivo.setAguaInicial(nueva);
+                        break;
+                    case 2:
+                        Comida cm = new Comida();
+                        int ComidaRequerida = cm.crearRecurso(this.aguaInicial, this.oroInicial);
+                        int nuevaC = this.comidaInicial + ComidaRequerida;
+                        int nuevaAgua = this.aguaInicial - (ComidaRequerida * 2);
+                        this.aguaInicial = nuevaAgua;
+                        int nuevoO = this.oroInicial - (ComidaRequerida * 2);
+                        this.aguaInicial = nuevaC;
+                        jugadorActivo.setAguaInicial(nuevaAgua);
+                        jugadorActivo.setOroInicial(nuevoO);
+                        jugadorActivo.setComidaInicial(nuevaC);
+                        break;
+                    case 3:
+                        Oro or = new Oro();
+                        int OroRequerida = or.crearRecurso(this.aguaInicial, this.oroInicial);
+                        int nuevoOr = this.oroInicial + OroRequerida;
+                        int nuevaAgu = this.aguaInicial - (OroRequerida * 2);
+                        this.aguaInicial = nuevaAgu;
+                        int nuevaCo = this.comidaInicial - (OroRequerida * 2);
+                        this.aguaInicial = nuevaAgu;
+                        jugadorActivo.setAguaInicial(nuevaAgu);
+                        jugadorActivo.setComidaInicial(nuevaCo);
+                        jugadorActivo.setOroInicial(nuevoOr);
+                        break;
+                }
 
+                /*Si para regresar al menu principal sin alterar las fases ni la cantidad de turnos*/
                 jugadorActivo.setEstado(true);
-                cantTurnos = jugadorActivo.cuentaTurnos(estado);
                 jugadorInactivo.setEstado(false);//jugador inactivo pasa a estar activo
                 Turno(jugadorActivo, jugadorInactivo);
                 muestraAcciones(jugadorActivo, jugadorInactivo);
@@ -206,7 +323,6 @@ public class Usuario {
                 edificacion.creaEdificacion();
 
                 jugadorActivo.setEstado(true);
-                cantTurnos = jugadorActivo.cuentaTurnos(estado);
                 jugadorInactivo.setEstado(false);//jugador inactivo pasa a estar activo
                 Turno(jugadorActivo, jugadorInactivo);
                 muestraAcciones(jugadorActivo, jugadorInactivo);
