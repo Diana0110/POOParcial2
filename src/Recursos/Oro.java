@@ -6,13 +6,14 @@
 package Recursos;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
  * @author Diana
  */
 public class Oro implements Recurso {
-
+    Scanner entrada = new Scanner(System.in);
     int cantInicial;
     String nombre;
     //Recurso tipo;
@@ -92,18 +93,18 @@ public class Oro implements Recurso {
     }
 
     @Override
-    public Recurso crearRecurso() {
-        this.setNombre("Oro");
-        this.precioEnComida = 150;
-        this.cantInicial = 300;
-        this.precioEnAgua = 75;
-        this.FasesRecoleccion = 2;//dos fases
-        this.FasesGenerados = 2;//una fase
-
-        Oro nuevoOro = new Oro(nombre, cantInicial, precioEnComida, precioEnAgua, FasesRecoleccion, FasesGenerados);
-        this.oro.add(nuevoOro);
-        System.out.println("ORO CREADO");
-        return nuevoOro;
+    public int crearRecurso(int comida , int agua) {
+        System.out.println("ATENCION: \n" + ""
+                + "El costo del recurso adquirido es el doble de la cantidad adquirida en el resto de recursos");
+        
+       System.out.println("Cuanta agua quiere?");
+        int nueva = entrada.nextInt();
+        if(comida > nueva && agua > nueva){
+            return nueva;
+    }else {
+            System.out.println("No tiene los recursos necesarios para adquirir agua");
+        }
+        return 0;
     }
 }
 

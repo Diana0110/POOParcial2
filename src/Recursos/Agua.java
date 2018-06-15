@@ -4,31 +4,37 @@
  * and open the template in the editor.
  */
 package Recursos;
+
 import Jugadores.Usuario;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Diana
  */
 public class Agua implements Recurso {
 
-    int cantInicial;
-    String nombre;
+    Scanner entrada = new Scanner(System.in);
+    int cantidad;
     int precioEnOro;
     int precioEnComida;
     int FasesRecoleccion; //por defecto
     int FasesGenerados;//mas caro
-    
+
     public ArrayList<Agua> agua = new ArrayList();//Toda el agua se guarda en un array
 
     //constructor
-    public Agua(){
-        
+    public Agua() {
+
     }
-    
-    public Agua(String nombre,int cantInicial, int precioEnOro, int precioEnComida, int FasesRecoleccion, int FasesGenerados) {
-        this.nombre = nombre;
-        this.cantInicial = cantInicial;
+
+    public Agua(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public Agua(int cantidad, int precioEnOro, int precioEnComida, int FasesRecoleccion, int FasesGenerados) {
+        this.cantidad = cantidad;
         this.precioEnOro = precioEnOro;
         this.precioEnComida = precioEnComida;
         this.FasesRecoleccion = FasesRecoleccion;
@@ -36,19 +42,11 @@ public class Agua implements Recurso {
     }
 
     public int getCantInicial() {
-        return cantInicial;
+        return cantidad;
     }
 
-    public void setCantInicial(int cantInicial) {
-        this.cantInicial = cantInicial;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCantInicial(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public int getPrecioEnOro() {
@@ -85,23 +83,23 @@ public class Agua implements Recurso {
 
     @Override
     public void comprarRecurso(Recurso oro, Recurso comida) {
-        
+
         System.out.println("Ya hay agua");
     }
 
     @Override
-    public Recurso crearRecurso() {
-        this.setNombre("Agua");
-        this.precioEnOro = 100;
-        this.cantInicial = 300;
-        this.precioEnComida = 75;
-        this.FasesRecoleccion = 2;//dos fases
-        this.FasesGenerados = 1;//una fase
+    public int crearRecurso(int comida, int oro) {
+        System.out.println("ATENCION: \n" + ""
+                + "El costo del recurso adquirido es el doble de la cantidad adquirida en el resto de recursos");
         
-        Agua nuevaAgua = new Agua(nombre, cantInicial, precioEnOro, precioEnComida,FasesRecoleccion,FasesGenerados);
-        this.agua.add(nuevaAgua);
-        System.out.println("AGUA CREADA");
-        return nuevaAgua;
+       System.out.println("Cuanta agua quiere?");
+        int nueva = entrada.nextInt();
+        if(comida > nueva && oro > nueva){
+            return nueva;
+    }else {
+            System.out.println("No tiene los recursos necesarios para adquirir agua");
+        }
+        return 0;
     }
 
 }

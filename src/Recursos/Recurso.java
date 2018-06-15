@@ -11,6 +11,6 @@ package Recursos;
  * ABSTRACT BUILDER
  */
 public interface Recurso {
-    public Recurso crearRecurso();
+    public int crearRecurso(int recurso, int recurso2);
     public void comprarRecurso(Recurso recurso1, Recurso recurso2);
 }

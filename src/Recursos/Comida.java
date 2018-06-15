@@ -6,16 +6,15 @@
 package Recursos;
 
 import java.util.ArrayList;
-
+import java.util.Scanner;
 /**
  *
  * @author Diana
  */
 public class Comida implements Recurso {
-
+    
+    Scanner entrada = new Scanner(System.in);
     int cantInicial;
-    String nombre;
-    //Recurso tipo;
     int precioEnOro;
     int precioEnAgua;
     int FasesRecoleccion; //por defecto
@@ -29,14 +28,6 @@ public class Comida implements Recurso {
 
     public void setCantInicial(int cantInicial) {
         this.cantInicial = cantInicial;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public int getPrecioEnOro() {
@@ -72,13 +63,11 @@ public class Comida implements Recurso {
     }
 
     //constructor
-    
-    public Comida(){
-        
+    public Comida() {
+
     }
-    
-    public Comida(String nombre, int cantInicial, int precioEnOro, int precioEnAgua, int FasesRecoleccion, int FasesGenerados) {
-        this.nombre = nombre;
+
+    public Comida(int cantInicial, int precioEnOro, int precioEnAgua, int FasesRecoleccion, int FasesGenerados) {
         this.cantInicial = cantInicial;
         this.precioEnOro = precioEnOro;
         this.precioEnAgua = precioEnAgua;
@@ -92,17 +81,18 @@ public class Comida implements Recurso {
     }
 
     @Override
-    public Recurso crearRecurso() {
-        this.setNombre("Comida");
-        this.precioEnOro = 120;
-        this.cantInicial = 300;
-        this.precioEnAgua = 60;
-        this.FasesRecoleccion = 2;//dos fases
-        this.FasesGenerados = 2;//una fase
+    public int crearRecurso(int agua, int oro) {
+        System.out.println("ATENCION: \n" + ""
+                + "El costo del recurso adquirido es el doble de la cantidad adquirida en el resto de recursos");
 
-        Comida nuevaComida = new Comida(nombre, cantInicial, precioEnOro, precioEnAgua, FasesRecoleccion, FasesGenerados);
-        this.comida.add(nuevaComida);
-        System.out.println("COMIDA CREADA");
-        return nuevaComida;
+        System.out.println("Cuanta agua quiere?");
+        int nueva = entrada.nextInt();
+        if (agua > nueva && oro > nueva) {
+            return nueva;
+        } else {
+            System.out.println("No tiene los recursos necesarios para adquirir agua");
+        }
+        return 0;
+
     }
 }
